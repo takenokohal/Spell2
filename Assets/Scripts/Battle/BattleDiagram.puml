@@ -1,0 +1,78 @@
+﻿@startuml
+
+package Pure{
+
+
+abstract SpellBase{
+- SpellAdditiveData
+- BattleObjectFactory
+}
+class PlayerSpellController{
++ void Chant()
+}
+class PlayerMoveController{
+
+}
+class PlayerFactory
+
+interface IPlayerPhysics{
++ Vector2 Velocity{get; set;}
++ bool Rotation{get; set;}
+}
+
+
+
+class SpellFactory{
++void CreateAndPlay();
+}
+
+class BattleObjectFactory
+
+interface IBattleObject
+}
+
+package Data{
+
+abstract SpellAdditiveData
+
+class BattleObjectAssetHolder
+}
+
+package Database{
+
+class SpellAdditiveDatabase
+{
++T GetData<T>()
+}
+}
+
+
+package UnityObject{
+
+abstract BattleObject
+
+class PlayerView{
+-Rigidbody
+}
+}
+
+package Input{
+class PlayerInputPresenter
+}
+
+PlayerSpellController -d-> SpellFactory
+SpellFactory -d=> SpellBase
+SpellBase -d-> SpellAdditiveData
+SpellFactory -> SpellAdditiveDatabase
+SpellFactory -> BattleObjectFactory
+SpellAdditiveDatabase -> SpellAdditiveData
+BattleObjectFactory -> BattleObjectAssetHolder
+SpellBase -d-> IBattleObject
+PlayerMoveController -> IPlayerPhysics
+PlayerView -u-|> IPlayerPhysics
+PlayerInputPresenter -d-> PlayerSpellController
+PlayerInputPresenter -d-> PlayerMoveController
+BattleObject -u-|> IBattleObject
+
+
+@enduml

@@ -990,6 +990,34 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "Battle",
+            "id": "3c897333-9a95-4c03-b75b-a17d00bf5644",
+            "actions": [
+                {
+                    "name": "Chant0",
+                    "type": "Button",
+                    "id": "278f9bb5-fe64-45f0-a302-f39bfced337b",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "e1902240-087f-4f2d-bdcf-1c900d2951ff",
+                    "path": "<Keyboard>/numpad4",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Chant0",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": [
