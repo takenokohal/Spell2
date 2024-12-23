@@ -11,7 +11,7 @@ namespace Battle.Model.Player
             _playerBodyView = playerBodyView;
         }
 
-        private bool _lookRight;
+        private bool _lookRight = true;
 
         public bool LookRight
         {

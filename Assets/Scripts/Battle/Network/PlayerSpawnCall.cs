@@ -10,19 +10,17 @@ namespace Battle.Network
 
         public override void Spawned()
         {
-            if (!Object.HasStateAuthority)
-                return;
             PlayerView = GetComponent<PlayerView>();
 
             var factoryObject = GameObject.FindWithTag("Factory");
             var callBack = factoryObject.GetComponent<IPlayerSpawnCallback>();
-            callBack.OnSpawned(this);
+            callBack.OnSpawned(this, HasStateAuthority);
         }
 
 
         public interface IPlayerSpawnCallback
         {
-            public void OnSpawned(PlayerSpawnCall playerSpawnCall);
+            public void OnSpawned(PlayerSpawnCall playerSpawnCall, bool hasAuthority);
         }
     }
 }

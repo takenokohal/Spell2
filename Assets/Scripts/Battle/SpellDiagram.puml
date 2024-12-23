@@ -1,0 +1,53 @@
+﻿@startuml
+
+package Top
+{
+
+package Model
+{
+class PlayerBody
+
+class SpellBase
+}
+
+package Controller
+{
+class PlayerSpellController
+}
+
+}
+
+package Mid{
+
+package Presenter
+{
+class PlayerInputPresenter
+}
+
+
+}
+
+package Bot
+{
+
+package Input
+{
+class BattleInputWrapper
+}
+
+package Network
+{
+}
+
+package View
+{
+}
+
+}
+
+PlayerInputPresenter -d-> BattleInputWrapper
+PlayerInputPresenter -u-> PlayerSpellController
+
+
+
+@enduml

@@ -15,11 +15,12 @@ namespace Battle.God.Factory
 
         [Inject] private readonly NetworkRunner _networkRunner;
 
-        public T Create<T>(string bulletKey) where T : BattleObjectBase
+        public T Create<T>(string bulletKey, PlayerKey ownerKey, Vector2 pos, Quaternion rot = new())
+            where T : BattleObjectBase
         {
             var prefab = _battleObjectAssetHolder.Find(bulletKey);
-            var v = _networkRunner.Spawn(prefab);
-            v.Construct(new BattleObjectBase.ConstructParameter(_allPlayerManager));
+            var v = _networkRunner.Spawn(prefab, pos, rot);
+            v.Construct(new BattleObjectBase.ConstructParameter(ownerKey, _allPlayerManager));
             return (T)v;
         }
     }

@@ -20,6 +20,11 @@ namespace Battle.Model.Player
             dir.Normalize();
 
             _playerBody.Velocity = dir * _playerConstData.MoveSpeed;
+
+            if (inputDirection == Vector2Int.zero)
+                return;
+
+            _playerBody.Rotation = inputDirection.x;
         }
     }
 }

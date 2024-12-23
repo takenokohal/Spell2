@@ -1,9 +1,13 @@
-﻿using Battle.Model.Player;
+﻿using System;
+using System.Linq;
+using Battle.Input;
+using Battle.Model.Player;
+using Fusion;
 using UnityEngine;
 
-namespace Battle.Input
+namespace Battle.Presenter
 {
-    public class PlayerInputController : MonoBehaviour
+    public class PlayerInputPresenter : NetworkBehaviour
     {
         private BattleInputWrapper _battleInputWrapper;
         private PlayerSpellController _playerSpellController;
@@ -18,6 +22,7 @@ namespace Battle.Input
 
 
             public PlayerMoveController PlayerMoveController { get; }
+
 
             public ConstructParameter(
                 BattleInputWrapper battleInputWrapper,
@@ -49,8 +54,19 @@ namespace Battle.Input
 
         private void TryChant()
         {
+            var playerCount = Runner.ActivePlayers.Count();
+
             if (_battleInputWrapper.WasPressedThisFrame(BattleInputButton.Chant0))
-                _playerSpellController.Chant();
+            {
+                if (playerCount > 1)
+                {
+                    _playerSpellController.NetworkChant();
+                }
+                else
+                {
+                    _playerSpellController.Chant();
+                }
+            }
         }
 
         private void FixedUpdate()

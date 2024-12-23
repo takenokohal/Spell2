@@ -6,6 +6,6 @@ namespace Battle.Model.Player
     {
         public Vector2 Position { get; set; }
         public Vector2 Velocity { get; set; }
-        public bool Rotation { set; }
+        public bool Rotation { get; set; }
     }
 }

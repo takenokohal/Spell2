@@ -14,7 +14,8 @@ namespace Battle.Model.Spell.Variable
 
         public override UniTask Sequence()
         {
-            var bullet = BattleObjectFactory.Create<DirectionalBullet>(GetAdditionalData<AdditionalData>().BulletKey);
+            var bulletKey = GetAdditionalData<AdditionalData>().BulletKey;
+            var bullet = BattleObjectFactory.Create<DirectionalBullet>(bulletKey, Owner.PlayerKey, CalcPos());
             bullet.Shoot(new DirectionalBullet.Parameter(CalcPos(), CalcDir()));
 
             return UniTask.CompletedTask;
@@ -22,7 +23,7 @@ namespace Battle.Model.Spell.Variable
 
         private Vector2 CalcPos()
         {
-            return Owner.PlayerBody.Position;
+            return Owner.PlayerBody.Position + CalcDir();
         }
 
         private Vector2 CalcDir()

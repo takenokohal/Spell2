@@ -36,8 +36,6 @@ namespace Battle.God
         }
         void IPlayerJoined.PlayerJoined(PlayerRef player)
         {
-            Debug.Log(player.PlayerId);
-            Debug.Log(_networkRunner.LocalPlayer.PlayerId);
             if (player != _networkRunner.LocalPlayer)
                 return;
 

@@ -1,0 +1,44 @@
+﻿@startuml
+
+package Model{
+
+package Player{
+class PlayerAttackHitController{
++ void OnAttacked(Parameter parameter)
+}
+interface IPlayerAttackHitView
+}
+
+package Attack{
+class AttackActiveController
+{
++ void SetUp()
+}
+interface IAttackView
+{
++ void SetUp()
+}
+}
+}
+package View{
+class PlayerAttackHitPresenter
+
+class PlayerAttackHitView
+class AttackView
+interface IAttackHittable
+{
++ void OnAttacked(Parameter parameter)
+}
+
+}
+
+PlayerAttackHitPresenter -u-> PlayerAttackHitController
+PlayerAttackHitController -> IPlayerAttackHitView
+PlayerAttackHitView --|> IPlayerAttackHitView
+AttackView --> IAttackHittable
+PlayerAttackHitPresenter --|> IAttackHittable
+AttackActiveController -> IAttackView
+AttackView -u-|> IAttackView
+BattleObject -u-> AttackView
+
+@enduml

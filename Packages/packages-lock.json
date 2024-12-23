@@ -255,6 +255,34 @@
       },
       "url": "https://packages.unity.com"
     },
+    "com.vrmc.gltf": {
+      "version": "https://github.com/vrm-c/UniVRM.git?path=/Assets/UniGLTF#v0.128.0",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {
+        "com.unity.modules.animation": "1.0.0"
+      },
+      "hash": "264a6bcf7897082ad381a1bccffb31c25f10cab2"
+    },
+    "com.vrmc.univrm": {
+      "version": "https://github.com/vrm-c/UniVRM.git?path=/Assets/VRM#v0.128.0",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {
+        "com.vrmc.gltf": "0.128.0",
+        "com.unity.ugui": "1.0.0"
+      },
+      "hash": "264a6bcf7897082ad381a1bccffb31c25f10cab2"
+    },
+    "com.vrmc.vrm": {
+      "version": "https://github.com/vrm-c/UniVRM.git?path=/Assets/VRM10#v0.128.0",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {
+        "com.vrmc.gltf": "0.128.0"
+      },
+      "hash": "264a6bcf7897082ad381a1bccffb31c25f10cab2"
+    },
     "jp.hadashikick.vcontainer": {
       "version": "https://github.com/hadashiA/VContainer.git?path=VContainer/Assets/VContainer#1.16.6",
       "depth": 0,
@@ -277,26 +305,6 @@
       "source": "registry",
       "dependencies": {
         "org.nuget.microsoft.bcl.asyncinterfaces": "6.0.0"
-      },
-      "url": "https://unitynuget-registry.azurewebsites.net"
-    },
-    "org.nuget.observablecollections": {
-      "version": "3.3.3",
-      "depth": 1,
-      "source": "registry",
-      "dependencies": {
-        "org.nuget.system.memory": "4.5.4",
-        "org.nuget.system.runtime.compilerservices.unsafe": "6.0.0"
-      },
-      "url": "https://unitynuget-registry.azurewebsites.net"
-    },
-    "org.nuget.observablecollections.r3": {
-      "version": "3.3.3",
-      "depth": 0,
-      "source": "registry",
-      "dependencies": {
-        "org.nuget.observablecollections": "3.3.3",
-        "org.nuget.r3": "1.0.0"
       },
       "url": "https://unitynuget-registry.azurewebsites.net"
     },
