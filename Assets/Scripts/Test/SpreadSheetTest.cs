@@ -1,9 +1,9 @@
 ﻿using Cysharp.Threading.Tasks;
-using Data;
 using Sirenix.OdinInspector;
+using SpellProject.Data;
+using SpellProject.Utility;
 using Takenokohal.Utility;
 using UnityEngine;
-using Utility;
 
 namespace Test
 {
