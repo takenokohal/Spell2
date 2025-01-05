@@ -1,4 +1,5 @@
 ﻿using Battle.Detail.Input;
+using Battle.Domain.Core;
 using Battle.Domain.Interfaces;
 using Battle.Domain.UseCase;
 using Battle.Network;

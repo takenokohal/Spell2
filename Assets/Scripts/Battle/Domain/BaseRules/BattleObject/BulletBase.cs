@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Battle.Domain.Core.ExpansionBaseRule.BattleObject
+namespace Battle.Domain.BaseRules.BattleObject
 {
     public abstract class BulletBase : BattleObjectBase
     {

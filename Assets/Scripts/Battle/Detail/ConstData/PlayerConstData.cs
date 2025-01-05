@@ -1,10 +1,11 @@
-﻿using Sirenix.OdinInspector;
+﻿using Battle.Domain.Interfaces.Player;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
-namespace Data.Database
+namespace Battle.Detail.ConstData
 {
     [CreateAssetMenu(menuName = "Create PlayerConstData", fileName = "PlayerConstData", order = 0)]
-    public class PlayerConstData : SerializedScriptableObject
+    public class PlayerConstData : SerializedScriptableObject , IPlayerConstData
     {
         [SerializeField] private float moveSpeed;
 

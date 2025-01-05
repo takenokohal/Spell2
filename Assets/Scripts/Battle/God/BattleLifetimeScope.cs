@@ -1,10 +1,11 @@
-﻿using Battle.Detail.Input;
+﻿using Battle.AssetHolders;
+using Battle.Detail.ConstData;
+using Battle.Detail.Input;
 using Battle.Domain.Core.Player;
 using Battle.God.Binder;
 using Battle.God.Factory;
 using Battle.View;
 using Battle.View.UI;
-using Data.AssetHolders;
 using Data.Database;
 using Fusion;
 using UnityEngine;
@@ -34,14 +35,14 @@ namespace Battle.God
 
             //Binder
             builder.RegisterComponentInHierarchy<PlayerBinder>();
-            
+
             //Manager
             builder.RegisterComponentInHierarchy<BattleModeManager>().AsImplementedInterfaces();
             builder.Register<AllPlayerManager>(Lifetime.Singleton);
 
             //Data
             builder.RegisterInstance(spellAdditionalDatabase);
-            builder.RegisterInstance(playerConstData);
+            builder.RegisterInstance(playerConstData).AsImplementedInterfaces();
 
             //AssetHolder
             builder.RegisterInstance(battleObjectAssetHolder);

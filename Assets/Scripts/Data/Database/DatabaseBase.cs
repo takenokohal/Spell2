@@ -7,6 +7,7 @@ using Takenokohal.Utility;
 using UnityEditor;
 using Utility;
 
+
 namespace Data.Database
 {
     public abstract class DatabaseBase<TData, TChild> : SerializedScriptableObject

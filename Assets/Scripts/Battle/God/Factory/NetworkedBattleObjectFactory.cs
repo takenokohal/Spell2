@@ -1,7 +1,7 @@
-﻿using Battle.Domain.Core.ExpansionBaseRule.BattleObject;
+﻿using Battle.AssetHolders;
+using Battle.Domain.BaseRules.BattleObject;
 using Battle.Domain.Core.Player;
 using Battle.Domain.Interfaces.Factory;
-using Data.AssetHolders;
 using Fusion;
 using UnityEngine;
 using VContainer;

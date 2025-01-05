@@ -4,7 +4,7 @@ using Cysharp.Threading.Tasks;
 using Data;
 using Data.Database;
 
-namespace Battle.Domain.Core.ExpansionBaseRule.Spell
+namespace Battle.Domain.BaseRules.Spell
 {
     public abstract class SpellBase : ISpellSequence
     {

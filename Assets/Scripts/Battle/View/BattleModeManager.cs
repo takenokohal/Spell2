@@ -1,4 +1,5 @@
-﻿using Battle.Domain.Interfaces;
+﻿using Battle.Domain.Core;
+using Battle.Domain.Interfaces;
 using Battle.God;
 using Battle.Network;
 using UnityEngine;

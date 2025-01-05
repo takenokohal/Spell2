@@ -1,14 +1,15 @@
 ﻿using System;
 using Battle.Controller;
 using Battle.Detail.Input;
+using Battle.Domain.Core;
 using Battle.Domain.Core.Player;
 using Battle.Domain.Interfaces;
 using Battle.Domain.Interfaces.Factory;
+using Battle.Domain.Interfaces.Player;
 using Battle.Domain.UseCase;
 using Battle.Network;
 using Battle.View;
 using Cysharp.Threading.Tasks;
-using Data.Database;
 using UnityEngine;
 using VContainer;
 
@@ -18,7 +19,7 @@ namespace Battle.God.Binder
     {
         [Inject] private readonly AllPlayerManager _allPlayerManager;
         [Inject] private readonly ISpellFactory _spellFactory;
-        [Inject] private readonly PlayerConstData _playerConstData;
+        [Inject] private readonly IPlayerConstData _playerConstData;
 
         [Inject] private readonly IBattleModeManager _battleModeManager;
 

@@ -1,4 +1,4 @@
-﻿using Battle.Domain.Core.ExpansionBaseRule.BattleObject;
+﻿using Battle.Domain.BaseRules.BattleObject;
 using Battle.Domain.Core.Player;
 using UnityEngine;
 

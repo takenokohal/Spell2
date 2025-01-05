@@ -2,7 +2,7 @@
 using Cysharp.Threading.Tasks;
 using Fusion;
 
-namespace Battle.Domain.Core.ExpansionBaseRule.BattleObject
+namespace Battle.Domain.BaseRules.BattleObject
 {
     //生成した側だけが処理
     public abstract class BattleObjectBase : NetworkBehaviour

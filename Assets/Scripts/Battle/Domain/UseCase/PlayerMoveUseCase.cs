@@ -1,5 +1,5 @@
 ﻿using Battle.Domain.Core.Player;
-using Data.Database;
+using Battle.Domain.Interfaces.Player;
 using UnityEngine;
 
 namespace Battle.Domain.UseCase
@@ -7,9 +7,9 @@ namespace Battle.Domain.UseCase
     public class PlayerMoveUseCase
     {
         private readonly PlayerBody _playerBody;
-        private readonly PlayerConstData _playerConstData;
+        private readonly IPlayerConstData _playerConstData;
 
-        public PlayerMoveUseCase(PlayerBody playerBody, PlayerConstData playerConstData)
+        public PlayerMoveUseCase(PlayerBody playerBody, IPlayerConstData playerConstData)
         {
             _playerBody = playerBody;
             _playerConstData = playerConstData;

@@ -1,4 +1,4 @@
-﻿using Battle.Domain.Core.ExpansionBaseRule.Spell;
+﻿using Battle.Domain.BaseRules.Spell;
 using Battle.Domain.Core.Player;
 using Battle.Domain.Interfaces.Factory;
 using Battle.Expansion.Spells;

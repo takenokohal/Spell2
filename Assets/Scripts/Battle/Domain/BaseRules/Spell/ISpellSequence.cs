@@ -1,6 +1,6 @@
 ﻿using Cysharp.Threading.Tasks;
 
-namespace Battle.Domain.Core.ExpansionBaseRule.Spell
+namespace Battle.Domain.BaseRules.Spell
 {
     public interface ISpellSequence
     {

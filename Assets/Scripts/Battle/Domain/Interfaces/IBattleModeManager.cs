@@ -1,4 +1,5 @@
-﻿using Battle.Network;
+﻿
+using Battle.Domain.Core;
 
 namespace Battle.Domain.Interfaces
 {

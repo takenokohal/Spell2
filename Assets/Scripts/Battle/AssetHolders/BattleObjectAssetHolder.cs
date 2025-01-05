@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
-using Battle.Domain.Core.ExpansionBaseRule.BattleObject;
+using Battle.Domain.BaseRules.BattleObject;
 using Sirenix.OdinInspector;
 using Sirenix.Serialization;
 using UnityEngine;
 
-namespace Data.AssetHolders
+namespace Battle.AssetHolders
 {
     [CreateAssetMenu(menuName = "Create BattleObjectAssetHolder", fileName = "BattleObjectAssetHolder", order = 0)]
     public class BattleObjectAssetHolder : SerializedScriptableObject

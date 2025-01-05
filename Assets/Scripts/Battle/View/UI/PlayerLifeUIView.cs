@@ -1,4 +1,5 @@
-﻿using Battle.Domain.Interfaces.Player;
+﻿using Battle.Detail.ConstData;
+using Battle.Domain.Interfaces.Player;
 using Data.Database;
 using R3;
 using UnityEngine;

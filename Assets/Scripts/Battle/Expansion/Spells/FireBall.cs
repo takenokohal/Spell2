@@ -1,4 +1,4 @@
-﻿using Battle.Domain.Core.ExpansionBaseRule.Spell;
+﻿using Battle.Domain.BaseRules.Spell;
 using Battle.Expansion.BattleObjects.Bullets;
 using Cysharp.Threading.Tasks;
 using Data;

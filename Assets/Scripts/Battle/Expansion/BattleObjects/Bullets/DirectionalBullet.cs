@@ -1,5 +1,5 @@
-﻿using Battle.Domain.Core.Attack;
-using Battle.Domain.Core.ExpansionBaseRule.BattleObject;
+﻿using Battle.Domain.BaseRules.BattleObject;
+using Battle.Domain.Core.Attack;
 using Battle.Domain.Interfaces.Attack;
 using Battle.View;
 using UnityEngine;

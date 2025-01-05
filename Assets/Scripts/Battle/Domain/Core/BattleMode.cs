@@ -1,4 +1,4 @@
-﻿namespace Battle.Network
+﻿namespace Battle.Domain.Core
 {
     public enum BattleMode
     {
