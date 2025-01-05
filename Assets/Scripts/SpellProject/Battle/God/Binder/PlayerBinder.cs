@@ -90,6 +90,10 @@ namespace SpellProject.Battle.God.Binder
 
         private void ManageTraining(PlayerKey playerKey, CharacterBodyView characterBodyView, PlayerBody playerBody)
         {
+            //2Pは操作不可に
+            if (playerKey.ID != 0)
+                return;
+
             //後で依存逆転したいかも
             //Network
             var invertedRpc = characterBodyView.GetComponent<NetworkInvertedRpc>();

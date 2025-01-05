@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7334338251493859858}
   - component: {fileID: 2184138789919819977}
-  - component: {fileID: 1658020445930041177}
   - component: {fileID: 9198277404662891373}
   - component: {fileID: 2036866206988885560}
   - component: {fileID: 5753327093656999295}
@@ -65,28 +64,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &1658020445930041177
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1629513805993508483}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c5e690b5fb1084f5ab1c86457af401d4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SyncScale: 0
-  SyncParent: 1
-  _interpolationTarget: {fileID: 0}
-  UsePreciseRotation: 0
-  UseRenderSleepThresholds: 1
-  RenderThresholds:
-    UseEnergy: 1
-    Position: 0.01
-    Rotation: 0.01
-    Scale: 0.01
 --- !u!114 &9198277404662891373
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -104,7 +81,6 @@ MonoBehaviour:
   Flags: 262145
   NestedObjects: []
   NetworkedBehaviours:
-  - {fileID: 1658020445930041177}
   - {fileID: 5753327093656999295}
 --- !u!61 &2036866206988885560
 BoxCollider2D:

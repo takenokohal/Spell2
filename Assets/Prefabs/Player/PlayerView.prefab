@@ -6785,7 +6785,6 @@ GameObject:
   - component: {fileID: 7137676821991006781}
   - component: {fileID: 746231004464448436}
   - component: {fileID: 5077694664262781146}
-  - component: {fileID: 559693285555152938}
   - component: {fileID: 2977789377713032113}
   - component: {fileID: 7973575987838797215}
   - component: {fileID: 3403960490185060376}
@@ -6845,7 +6844,6 @@ MonoBehaviour:
   NestedObjects: []
   NetworkedBehaviours:
   - {fileID: 7137676821991006781}
-  - {fileID: 559693285555152938}
   - {fileID: 7973575987838797215}
 --- !u!50 &5077694664262781146
 Rigidbody2D:
@@ -6874,28 +6872,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &559693285555152938
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6013386668979275191}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c5e690b5fb1084f5ab1c86457af401d4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SyncScale: 0
-  SyncParent: 1
-  _interpolationTarget: {fileID: 0}
-  UsePreciseRotation: 0
-  UseRenderSleepThresholds: 1
-  RenderThresholds:
-    UseEnergy: 1
-    Position: 0.01
-    Rotation: 0.01
-    Scale: 0.01
 --- !u!61 &2977789377713032113
 BoxCollider2D:
   m_ObjectHideFlags: 0
