@@ -9,5 +9,9 @@ namespace Data.Database
         [SerializeField] private float moveSpeed;
 
         public float MoveSpeed => moveSpeed;
+
+        [SerializeField] private int playerMaxLife;
+
+        public int PlayerMaxLife => playerMaxLife;
     }
 }

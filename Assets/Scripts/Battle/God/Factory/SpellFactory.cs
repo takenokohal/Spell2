@@ -1,6 +1,7 @@
-﻿using Battle.Model.Player;
-using Battle.Model.Spell;
-using Battle.Model.Spell.Variable;
+﻿using Battle.Domain.Core.ExpansionBaseRule.Spell;
+using Battle.Domain.Core.Player;
+using Battle.Domain.Interfaces.Factory;
+using Battle.Expansion.Spells;
 using Data.Database;
 using UnityEngine;
 using VContainer;
@@ -8,9 +9,9 @@ using VContainer;
 namespace Battle.God.Factory
 {
     //Spellは生成した側だけが処理実行
-    public class SpellFactory
+    public class SpellFactory : ISpellFactory
     {
-        [Inject] private readonly BattleObjectFactory _battleObjectFactory;
+        [Inject] private readonly IBattleObjectFactory _battleObjectFactory;
         [Inject] private readonly SpellAdditionalDatabase _spellAdditionalDatabase;
         [Inject] private readonly AllPlayerManager _allPlayerManager;
 

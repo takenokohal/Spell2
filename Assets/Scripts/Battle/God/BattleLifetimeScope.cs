@@ -1,6 +1,9 @@
-﻿using Battle.God.Factory;
-using Battle.Input;
-using Battle.Model.Player;
+﻿using Battle.Detail.Input;
+using Battle.Domain.Core.Player;
+using Battle.God.Binder;
+using Battle.God.Factory;
+using Battle.View;
+using Battle.View.UI;
 using Data.AssetHolders;
 using Data.Database;
 using Fusion;
@@ -15,31 +18,31 @@ namespace Battle.God
         [SerializeField] private SpellAdditionalDatabase spellAdditionalDatabase;
         [SerializeField] private BattleObjectAssetHolder battleObjectAssetHolder;
         [SerializeField] private PlayerConstData playerConstData;
-        
-        
+
+
         protected override void Configure(IContainerBuilder builder)
         {
             Debug.Log("aaa");
             builder.RegisterComponentInHierarchy<NetworkRunner>();
-            
+
             //EntryPoint
             builder.RegisterComponentInHierarchy<BattleEntryPoint>();
-            
-            //Factory
-            builder.RegisterComponentInHierarchy<PlayerFactory>();
-            builder.Register<SpellFactory>(Lifetime.Singleton);
-            builder.RegisterComponentInHierarchy<BattleObjectFactory>();
 
-            //Model
+            //Factory
+            builder.Register<SpellFactory>(Lifetime.Singleton).AsImplementedInterfaces();
+            builder.Register<NetworkedBattleObjectFactory>(Lifetime.Singleton).AsImplementedInterfaces();
+
+            //Binder
+            builder.RegisterComponentInHierarchy<PlayerBinder>();
+            
+            //Manager
+            builder.RegisterComponentInHierarchy<BattleModeManager>().AsImplementedInterfaces();
             builder.Register<AllPlayerManager>(Lifetime.Singleton);
 
-            //Input
-            builder.RegisterComponentInHierarchy<BattleInputWrapper>();
-            
             //Data
             builder.RegisterInstance(spellAdditionalDatabase);
             builder.RegisterInstance(playerConstData);
-            
+
             //AssetHolder
             builder.RegisterInstance(battleObjectAssetHolder);
         }

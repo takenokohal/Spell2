@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 2184138789919819977}
   - component: {fileID: 1658020445930041177}
   - component: {fileID: 9198277404662891373}
-  - component: {fileID: 2751650922118722580}
-  - component: {fileID: 7493747643077211003}
   - component: {fileID: 2036866206988885560}
+  - component: {fileID: 5753327093656999295}
+  - component: {fileID: 5055133258785022872}
   m_Layer: 0
   m_Name: SimpleBullet
   m_TagString: Untagged
@@ -105,33 +105,7 @@ MonoBehaviour:
   NestedObjects: []
   NetworkedBehaviours:
   - {fileID: 1658020445930041177}
-  - {fileID: 2751650922118722580}
---- !u!114 &2751650922118722580
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1629513805993508483}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ca001301c6494613a13e36f65e379bff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  body: {fileID: 2184138789919819977}
---- !u!114 &7493747643077211003
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1629513805993508483}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 75ac5f612b984778aae16c29a0f480ae, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  col: {fileID: 2036866206988885560}
+  - {fileID: 5753327093656999295}
 --- !u!61 &2036866206988885560
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -178,6 +152,33 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &5753327093656999295
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1629513805993508483}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca001301c6494613a13e36f65e379bff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  body: {fileID: 2184138789919819977}
+  attackActiveView: {fileID: 5055133258785022872}
+--- !u!114 &5055133258785022872
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1629513805993508483}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75ac5f612b984778aae16c29a0f480ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  col: {fileID: 2036866206988885560}
 --- !u!1 &3733500875875715445
 GameObject:
   m_ObjectHideFlags: 0

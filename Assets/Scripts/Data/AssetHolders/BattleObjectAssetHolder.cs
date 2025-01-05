@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using Battle.Model.BattleObject;
+using Battle.Domain.Core.ExpansionBaseRule.BattleObject;
 using Sirenix.OdinInspector;
 using Sirenix.Serialization;
 using UnityEngine;

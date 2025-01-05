@@ -1,4 +1,5 @@
-﻿using Battle.Model.Attack;
+﻿using Battle.Domain.Core.Attack;
+using Battle.Domain.Interfaces.Attack;
 using UnityEngine;
 
 namespace Battle.Test

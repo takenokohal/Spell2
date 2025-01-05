@@ -1,18 +1,18 @@
-using Battle.God.Factory;
-using Battle.Model.Player;
+using Battle.Domain.Core.Player;
+using Battle.Domain.Interfaces.Factory;
+using Battle.Domain.UseCase;
 using Cysharp.Threading.Tasks;
 using Fusion;
-using R3;
 using UnityEngine;
 
 namespace Battle.Network
 {
-    public class NetworkInvertedRpc : NetworkBehaviour, PlayerSpellController.INetworkedSpellChantCall
+    public class NetworkInvertedRpc : NetworkBehaviour, PlayerSpellUseCase.INetworkedSpellChantCall
     {
-        private SpellFactory _spellFactory;
+        private ISpellFactory _spellFactory;
         private PlayerKey _playerKey;
 
-        public void Construct(SpellFactory spellFactory, PlayerKey playerKey)
+        public void Construct(ISpellFactory spellFactory, PlayerKey playerKey)
         {
             _spellFactory = spellFactory;
             _playerKey = playerKey;

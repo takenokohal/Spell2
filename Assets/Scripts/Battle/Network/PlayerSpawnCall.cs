@@ -1,26 +1,13 @@
-﻿using Battle.View;
-using Fusion;
-using UnityEngine;
+﻿using Fusion;
 
 namespace Battle.Network
 {
+    //Injectもされないしコンストラクタも呼べないので、むりやりFind
     public class PlayerSpawnCall : NetworkBehaviour
     {
-        public PlayerView PlayerView { get; private set; }
-
-        public override void Spawned()
+        private void Start()
         {
-            PlayerView = GetComponent<PlayerView>();
-
-            var factoryObject = GameObject.FindWithTag("Factory");
-            var callBack = factoryObject.GetComponent<IPlayerSpawnCallback>();
-            callBack.OnSpawned(this, HasStateAuthority);
-        }
-
-
-        public interface IPlayerSpawnCallback
-        {
-            public void OnSpawned(PlayerSpawnCall playerSpawnCall, bool hasAuthority);
+            IPlayerBinder.Find().Bind(this, HasStateAuthority);
         }
     }
 }

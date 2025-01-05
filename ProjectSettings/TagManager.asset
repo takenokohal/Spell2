@@ -4,7 +4,7 @@
 TagManager:
   serializedVersion: 3
   tags:
-  - Factory
+  - Binder
   layers:
   - Default
   - TransparentFX
