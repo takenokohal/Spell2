@@ -1,6 +1,6 @@
 ﻿using Cysharp.Threading.Tasks;
 using UnityEditor;
-using UnityEngine;
+using SpellProject.Data.AssetHolders;
 
 namespace SpellProject.Data.Database
 {
@@ -11,10 +11,14 @@ namespace SpellProject.Data.Database
         [MenuItem("Assets/UpdateAllDatabase")]
         private static void UpdateAllDatabase()
         {
-            var spellDatabase = SpellDatabase.LoadOnEditor();
-            spellDatabase.UpdateAsync().Forget();
-            Debug.Log("UpdateAttack");
+            UpdateAsync().Forget();
+        }
 
+        private static async UniTaskVoid UpdateAsync()
+        {
+            await AssetLoaderOnEditor.LoadDatabaseOnEditor<SpellDatabase>().UpdateAsync();
+            await AssetLoaderOnEditor.LoadDatabaseOnEditor<AttackDatabase>().UpdateAsync();
+            await AssetLoaderOnEditor.LoadAssetHolderOnEditor<BattleObjectAssetHolder>().UpdateAsync();
             AssetDatabase.SaveAssets();
         }
     }

@@ -12,7 +12,7 @@ namespace SpellProject.Battle.God.Factory
     public class SpellFactory : ISpellFactory
     {
         [Inject] private readonly IBattleObjectFactory _battleObjectFactory;
-        [Inject] private readonly SpellAdditionalDatabase _spellAdditionalDatabase;
+        [Inject] private readonly ISpellAdditionalDatabase _spellAdditionalDatabase;
         [Inject] private readonly AllPlayerManager _allPlayerManager;
 
         public ISpellSequence Create(PlayerKey playerKey, string spellKey)

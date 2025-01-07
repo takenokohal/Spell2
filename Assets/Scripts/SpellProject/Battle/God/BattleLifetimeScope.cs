@@ -1,10 +1,10 @@
 ﻿using Fusion;
-using SpellProject.Battle.AssetHolders;
 using SpellProject.Battle.Detail.ConstData;
 using SpellProject.Battle.Domain.Core.Player;
 using SpellProject.Battle.God.Binder;
 using SpellProject.Battle.God.Factory;
 using SpellProject.Battle.View;
+using SpellProject.Data.AssetHolders;
 using SpellProject.Data.Database;
 using UnityEngine;
 using VContainer;
@@ -29,7 +29,7 @@ namespace SpellProject.Battle.God
 
             //Factory
             builder.Register<SpellFactory>(Lifetime.Singleton).AsImplementedInterfaces();
-            builder.Register<NetworkedBattleObjectFactory>(Lifetime.Singleton).AsImplementedInterfaces();
+            builder.Register<BattleObjectFactory>(Lifetime.Singleton).AsImplementedInterfaces();
 
             //Binder
             builder.RegisterComponentInHierarchy<PlayerBinder>();
@@ -39,7 +39,7 @@ namespace SpellProject.Battle.God
             builder.Register<AllPlayerManager>(Lifetime.Singleton);
 
             //Data
-            builder.RegisterInstance(spellAdditionalDatabase);
+            builder.RegisterInstance(spellAdditionalDatabase).AsImplementedInterfaces();
             builder.RegisterInstance(playerConstData).AsImplementedInterfaces();
 
             //AssetHolder

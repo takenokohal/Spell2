@@ -48,3 +48,4 @@ MonoBehaviour:
     TypeName: 
   autoRun: 1
   autoInjectGameObjects: []
+  spellDatabase: {fileID: 11400000, guid: e0cc80371db334047b56996c01942cef, type: 2}

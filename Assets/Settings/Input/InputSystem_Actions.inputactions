@@ -1003,6 +1003,33 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Chant1",
+                    "type": "Button",
+                    "id": "5cf3eb7a-5b91-4a37-9361-f6b0bee18223",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Chant2",
+                    "type": "Button",
+                    "id": "fed44a5f-9c12-4db5-a87f-5e818271e278",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Chant3",
+                    "type": "Button",
+                    "id": "1865c4ee-fbd1-470b-a7fe-cb1b5722a0f2",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -1014,6 +1041,39 @@
                     "processors": "",
                     "groups": "",
                     "action": "Chant0",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8d298f86-3c73-4c09-b215-ccbb95eb05d5",
+                    "path": "<Keyboard>/numpad2",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Chant1",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "995e26ab-c5bc-4505-9480-18b7ae151fcc",
+                    "path": "<Keyboard>/numpad6",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Chant2",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6236600c-3ac0-4a0b-b9bf-9c472b900ccb",
+                    "path": "<Keyboard>/numpad8",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Chant3",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

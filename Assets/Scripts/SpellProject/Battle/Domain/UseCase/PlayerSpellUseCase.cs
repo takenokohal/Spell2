@@ -12,27 +12,35 @@ namespace SpellProject.Battle.Domain.UseCase
 
         private readonly INetworkedSpellChantCall _networkedSpellChantCall;
 
-        public PlayerSpellUseCase(ISpellFactory spellFactory, PlayerKey playerKey,
-            INetworkedSpellChantCall networkedSpellChantCall)
+        private readonly PlayerDeck _playerDeck;
+        private readonly PlayerHand _playerHand;
+
+        public PlayerSpellUseCase(ISpellFactory spellFactory, PlayerKey playerKey, INetworkedSpellChantCall networkedSpellChantCall, PlayerDeck playerDeck, PlayerHand playerHand)
         {
             _spellFactory = spellFactory;
             _playerKey = playerKey;
             _networkedSpellChantCall = networkedSpellChantCall;
+            _playerDeck = playerDeck;
+            _playerHand = playerHand;
         }
 
-        public void Chant()
+        public void Chant(int handIndex)
         {
-            var spellKey = "FireBall";
-            var spell = _spellFactory.Create(_playerKey, spellKey);
+            var spellEntity = _playerHand.CurrentHand[handIndex];
+            var spell = _spellFactory.Create(_playerKey, spellEntity.SpellKey);
 
             //処理はSpellに投げっぱなし
             spell.Sequence().Forget();
+            
+            //デッキ処理
+            _playerDeck.Draw(out var nextSpell);
+            _playerHand.Change(handIndex, nextSpell);
         }
 
-        public void NetworkChant()
+        public void NetworkChant(int handIndex)
         {
-            var spellKey = "FireBall";
-            _networkedSpellChantCall.ChantCall(spellKey);
+            var spellEntity = _playerHand.CurrentHand[handIndex];
+            _networkedSpellChantCall.ChantCall(spellEntity.SpellKey);
         }
 
         public interface INetworkedSpellChantCall

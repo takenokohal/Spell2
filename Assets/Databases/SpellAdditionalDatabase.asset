@@ -23,26 +23,23 @@ MonoBehaviour:
     SerializationNodes:
     - Name: _spellAdditiveDatas
       Entry: 7
-      Data: 0|System.Collections.Generic.List`1[[Data.ISpellAdditionalData, Assembly-CSharp]],
-        mscorlib
+      Data: 0|System.Collections.Generic.List`1[[SpellProject.Battle.Domain.BaseRules.Spell.ISpellAdditionalData,
+        SpellProject.Battle.Domain]], mscorlib
     - Name: 
       Entry: 12
-      Data: 2
+      Data: 1
     - Name: 
       Entry: 7
-      Data: 1|Battle.Model.Spell.Variable.TestSpell+AdditionalData, Assembly-CSharp
-    - Name: BulletKey
+      Data: 1|SpellProject.Battle.Expansion.Spells.FireBall+AdditionalData, Assembly-CSharp
+    - Name: BattleObjectKey
+      Entry: 7
+      Data: SpellProject.Data.AssetHolders.BattleObjectKey, SpellProject.Data
+    - Name: key
       Entry: 1
-      Data: FireBall
+      Data: SimpleBullet
     - Name: 
       Entry: 8
       Data: 
-    - Name: 
-      Entry: 7
-      Data: 2|Battle.Model.Spell.Variable.FireBall+AdditionalData, Assembly-CSharp
-    - Name: BulletKey
-      Entry: 1
-      Data: FireBall
     - Name: 
       Entry: 8
       Data: 

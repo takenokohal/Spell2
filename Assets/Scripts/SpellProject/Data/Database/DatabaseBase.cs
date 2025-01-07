@@ -6,41 +6,32 @@ using Sirenix.Serialization;
 using SpellProject.Utility;
 using Takenokohal.Utility;
 using UnityEditor;
+using UnityEngine;
 
 namespace SpellProject.Data.Database
 {
-    public abstract class DatabaseBase<TData, TChild> : SerializedScriptableObject
+    public abstract class DatabaseBase<TData> : SerializedScriptableObject
         where TData : IKeyHoldingData
-        where TChild : DatabaseBase<TData, TChild>
     {
         protected abstract DatabaseURL.SheetName GetSheetName();
 
-        [OdinSerialize] private Dictionary<string, TData> _data;
-        public IReadOnlyDictionary<string, TData> DataList => _data;
+        [SerializeField] private List<TData> data;
 
-        public TData Find(string key) => _data[key];
+        public IReadOnlyList<TData> DataList => data;
+
+        public TData FindByKey(string key) => data.First(value => value.Key == key);
+        public TData FindByIndex(int index) => data[index];
+        public int GetIndex(string key) => data.FindIndex(value => value.Key == key);
 
 #if UNITY_EDITOR
         public async UniTask UpdateAsync()
         {
-            _data.Clear();
-            var data = await SpreadSheetLoader.LoadData<TData>(DatabaseURL.GetDataURL(GetSheetName()));
-
-            _data = data.ToDictionary(value => value.Key);
+            data.Clear();
+            data = await SpreadSheetLoader.LoadData<TData>(DatabaseURL.GetDataURL(GetSheetName()));
 
             EditorUtility.SetDirty(this);
             AssetDatabase.SaveAssets();
         }
-
-
-        private const string DatabaseFolderPath = "Assets/Databases/";
-
-        public static TChild LoadOnEditor()
-        {
-            var path = DatabaseFolderPath + typeof(TChild).Name + ".asset";
-            var v = AssetDatabase.LoadAssetAtPath<TChild>(path);
-            return v;
-        }
-    }
 #endif
+    }
 }

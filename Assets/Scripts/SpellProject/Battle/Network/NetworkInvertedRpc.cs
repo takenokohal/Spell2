@@ -3,6 +3,7 @@ using Fusion;
 using SpellProject.Battle.Domain.Core.Player;
 using SpellProject.Battle.Domain.Interfaces.Factory;
 using SpellProject.Battle.Domain.UseCase;
+using SpellProject.Data.Database;
 using UnityEngine;
 
 namespace SpellProject.Battle.Network
@@ -11,23 +12,26 @@ namespace SpellProject.Battle.Network
     {
         private ISpellFactory _spellFactory;
         private PlayerKey _playerKey;
+        private SpellDatabase _spellDatabase;
 
-        public void Construct(ISpellFactory spellFactory, PlayerKey playerKey)
+        public void Construct(ISpellFactory spellFactory, PlayerKey playerKey, SpellDatabase spellDatabase)
         {
             _spellFactory = spellFactory;
             _playerKey = playerKey;
+            _spellDatabase = spellDatabase;
         }
 
         public void ChantCall(string spellKey)
         {
-            ChantCallRpc(spellKey);
+            var index = _spellDatabase.GetIndex(spellKey);
+            ChantCallRpc((byte)index);
         }
 
         [Rpc(RpcSources.StateAuthority, RpcTargets.Proxies, InvokeLocal = false)]
-        private void ChantCallRpc(string spellKey)
+        private void ChantCallRpc(byte spellIndex)
         {
-            Debug.Log(_spellFactory);
-            var v = _spellFactory.Create(_playerKey, spellKey);
+            var key = _spellDatabase.FindByIndex(spellIndex).spellKey;
+            var v = _spellFactory.Create(_playerKey, key);
             v.Sequence().Forget();
         }
     }

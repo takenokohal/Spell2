@@ -4,7 +4,7 @@ using UnityEngine;
 namespace SpellProject.Data.Database
 {
     [CreateAssetMenu(menuName = "Create SpellDatabase", fileName = "SpellDatabase", order = 0)]
-    public class SpellDatabase : DatabaseBase<SpellData, SpellDatabase>
+    public class SpellDatabase : DatabaseBase<SpellData>
     {
         protected override DatabaseURL.SheetName GetSheetName()
         {

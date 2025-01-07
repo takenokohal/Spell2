@@ -8,8 +8,10 @@ using SpellProject.Battle.Domain.Interfaces;
 using SpellProject.Battle.Domain.Interfaces.Factory;
 using SpellProject.Battle.Domain.Interfaces.Player;
 using SpellProject.Battle.Domain.UseCase;
+using SpellProject.Battle.Infrastructure;
 using SpellProject.Battle.Network;
 using SpellProject.Battle.View;
+using SpellProject.Data.Database;
 using UnityEngine;
 using VContainer;
 
@@ -20,6 +22,7 @@ namespace SpellProject.Battle.God.Binder
         [Inject] private readonly AllPlayerManager _allPlayerManager;
         [Inject] private readonly ISpellFactory _spellFactory;
         [Inject] private readonly IPlayerConstData _playerConstData;
+        [Inject] private readonly SpellDatabase _spellDatabase;
 
         [Inject] private readonly IBattleModeManager _battleModeManager;
 
@@ -39,6 +42,11 @@ namespace SpellProject.Battle.God.Binder
             var playerFacade = new PlayerFacade(playerBody, playerKey);
             _allPlayerManager.Register(playerKey, playerFacade);
 
+            //Deck
+            var deck = new PlayerDeck();
+            var hand = new PlayerHand();
+            var initializer = new PlayerSpellInitializer(new TestPlayerDeckLoader(), deck, hand);
+            initializer.InitializeAll();
 
             UniTask.Void(async () =>
             {
@@ -46,14 +54,15 @@ namespace SpellProject.Battle.God.Binder
                 switch (_battleModeManager.BattleMode)
                 {
                     case BattleMode.Online:
-                        ManageNetworkMode(hasAuthority, characterBodyView, playerKey, playerBody);
+                        ManageNetworkMode(hasAuthority, characterBodyView, playerKey, playerBody, deck, hand);
                         break;
                     case BattleMode.OfflineVersus:
+                        ManageOfflineVersus(playerKey, characterBodyView, playerBody, deck, hand);
                         break;
                     case BattleMode.OfflineSingle:
                         break;
                     case BattleMode.Training:
-                        ManageTraining(playerKey, characterBodyView, playerBody);
+                        ManageTraining(playerKey, characterBodyView, playerBody, deck, hand);
                         break;
                     case BattleMode.Tutorial:
                         break;
@@ -63,19 +72,24 @@ namespace SpellProject.Battle.God.Binder
             });
         }
 
-        private void ManageNetworkMode(bool hasAuthority, Component characterBodyView, PlayerKey playerKey,
-            PlayerBody playerBody)
+        private void ManageNetworkMode(
+            bool hasAuthority,
+            Component characterBodyView,
+            PlayerKey playerKey,
+            PlayerBody playerBody,
+            PlayerDeck playerDeck,
+            PlayerHand playerHand)
         {
             //Network
             var invertedRpc = characterBodyView.GetComponent<NetworkInvertedRpc>();
-            invertedRpc.Construct(_spellFactory, playerKey);
+            invertedRpc.Construct(_spellFactory, playerKey, _spellDatabase);
 
             //Input is LocalOnly
             if (!hasAuthority)
                 return;
 
             //UseCase
-            var spellUseCase = new PlayerSpellUseCase(_spellFactory, playerKey, invertedRpc);
+            var spellUseCase = new PlayerSpellUseCase(_spellFactory, playerKey, invertedRpc, playerDeck, playerHand);
             var moveUseCase = new PlayerMoveUseCase(playerBody, _playerConstData);
 
             var input = characterBodyView.GetComponent<PlayerInputController>();
@@ -88,7 +102,12 @@ namespace SpellProject.Battle.God.Binder
                 ));
         }
 
-        private void ManageTraining(PlayerKey playerKey, CharacterBodyView characterBodyView, PlayerBody playerBody)
+        private void ManageTraining(
+            PlayerKey playerKey,
+            CharacterBodyView characterBodyView,
+            PlayerBody playerBody,
+            PlayerDeck playerDeck,
+            PlayerHand playerHand)
         {
             //2Pは操作不可に
             if (playerKey.ID != 0)
@@ -97,9 +116,34 @@ namespace SpellProject.Battle.God.Binder
             //後で依存逆転したいかも
             //Network
             var invertedRpc = characterBodyView.GetComponent<NetworkInvertedRpc>();
-            invertedRpc.Construct(_spellFactory, playerKey);
+            invertedRpc.Construct(_spellFactory, playerKey, _spellDatabase);
 
-            var spellUseCase = new PlayerSpellUseCase(_spellFactory, playerKey, invertedRpc);
+            var spellUseCase = new PlayerSpellUseCase(_spellFactory, playerKey, invertedRpc, playerDeck, playerHand);
+            var moveUseCase = new PlayerMoveUseCase(playerBody, _playerConstData);
+
+            var input = characterBodyView.GetComponent<PlayerInputController>();
+            input.Construct(
+                new PlayerInputController.ConstructParameter(
+                    characterBodyView.GetComponent<BattleInputWrapper>(),
+                    spellUseCase,
+                    moveUseCase,
+                    _battleModeManager
+                ));
+        }
+
+        private void ManageOfflineVersus(
+            PlayerKey playerKey,
+            CharacterBodyView characterBodyView,
+            PlayerBody playerBody,
+            PlayerDeck playerDeck,
+            PlayerHand playerHand)
+        {
+            //後で依存逆転したいかも
+            //Network
+            var invertedRpc = characterBodyView.GetComponent<NetworkInvertedRpc>();
+            invertedRpc.Construct(_spellFactory, playerKey, _spellDatabase);
+
+            var spellUseCase = new PlayerSpellUseCase(_spellFactory, playerKey, invertedRpc, playerDeck, playerHand);
             var moveUseCase = new PlayerMoveUseCase(playerBody, _playerConstData);
 
             var input = characterBodyView.GetComponent<PlayerInputController>();

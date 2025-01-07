@@ -16,16 +16,16 @@ MonoBehaviour:
     SerializedFormat: 2
     SerializedBytes: 
     ReferencedUnityObjects:
-    - {fileID: 2751650922118722580, guid: b41419fc03a90624bbd4ae83ea55903e, type: 3}
+    - {fileID: 5753327093656999295, guid: b41419fc03a90624bbd4ae83ea55903e, type: 3}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes:
-    - Name: _battleObjectBases
+    - Name: _dataList
       Entry: 7
-      Data: 0|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[Battle.Model.BattleObject.BattleObjectBase,
-        Assembly-CSharp]], mscorlib
+      Data: 0|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[SpellProject.Battle.Domain.BaseRules.BattleObject.BattleObjectBase,
+        SpellProject.Battle.Domain]], mscorlib
     - Name: comparer
       Entry: 7
       Data: 1|System.Collections.Generic.GenericEqualityComparer`1[[System.String,
@@ -41,7 +41,7 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 1
-      Data: FireBall
+      Data: SimpleBullet
     - Name: $v
       Entry: 10
       Data: 0
@@ -54,3 +54,4 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
+  folderPath: Assets/Prefabs/BattleObjects

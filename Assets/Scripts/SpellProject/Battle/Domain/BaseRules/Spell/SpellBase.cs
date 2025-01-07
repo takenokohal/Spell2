@@ -1,15 +1,13 @@
 using Cysharp.Threading.Tasks;
 using SpellProject.Battle.Domain.Core.Player;
 using SpellProject.Battle.Domain.Interfaces.Factory;
-using SpellProject.Data;
-using SpellProject.Data.Database;
 
 namespace SpellProject.Battle.Domain.BaseRules.Spell
 {
     public abstract class SpellBase : ISpellSequence
     {
         protected IBattleObjectFactory BattleObjectFactory { get; private set; }
-        private SpellAdditionalDatabase _spellAdditionalDatabase;
+        private ISpellAdditionalDatabase _spellAdditionalDatabase;
         protected PlayerFacade Owner { get; private set; }
         
         protected T GetAdditionalData<T>() where T : ISpellAdditionalData
@@ -20,12 +18,12 @@ namespace SpellProject.Battle.Domain.BaseRules.Spell
         public class ConstructParameters
         {
             public IBattleObjectFactory BattleObjectFactory { get; }
-            public SpellAdditionalDatabase SpellAdditionalDatabase { get; }
+            public ISpellAdditionalDatabase SpellAdditionalDatabase { get; }
             
             public PlayerFacade Owner { get; }
 
             public ConstructParameters(IBattleObjectFactory battleObjectFactory,
-                SpellAdditionalDatabase spellAdditionalDatabase, PlayerFacade owner)
+                ISpellAdditionalDatabase spellAdditionalDatabase, PlayerFacade owner)
             {
                 BattleObjectFactory = battleObjectFactory;
                 SpellAdditionalDatabase = spellAdditionalDatabase;

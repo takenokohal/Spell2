@@ -1,4 +1,5 @@
-﻿using SpellProject.Battle.Detail.Input;
+﻿using System;
+using SpellProject.Battle.Detail.Input;
 using SpellProject.Battle.Domain.Core;
 using SpellProject.Battle.Domain.Interfaces;
 using SpellProject.Battle.Domain.UseCase;
@@ -56,15 +57,20 @@ namespace SpellProject.Battle.Controller
 
         private void TryChant()
         {
-            if (_battleInputWrapper.WasPressedThisFrame(BattleInputButton.Chant0))
+            const int handMax = 4;
+            for (int i = 0; i < handMax; i++)
             {
+                var button = Enum.Parse<BattleInputButton>("Chant" + i);
+                if (!_battleInputWrapper.WasPressedThisFrame(button))
+                    continue;
+                
                 if (_battleModeManager.BattleMode == BattleMode.Online)
                 {
-                    _playerSpellUseCase.NetworkChant();
+                    _playerSpellUseCase.NetworkChant(i);
                 }
                 else
                 {
-                    _playerSpellUseCase.Chant();
+                    _playerSpellUseCase.Chant(i);
                 }
             }
         }
