@@ -24,7 +24,6 @@ namespace SpellProject.Battle.View
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            
             if (!_setUpped)
                 return;
             

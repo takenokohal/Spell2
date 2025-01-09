@@ -1,6 +1,7 @@
 ﻿using LitMotion;
 using LitMotion.Extensions;
 using SpellProject.Battle.Domain.Core.Attack;
+using SpellProject.Battle.Domain.Core.Player;
 using SpellProject.Battle.Domain.Interfaces.Attack;
 using SpellProject.Battle.Domain.Interfaces.Player;
 using UnityEngine;
@@ -12,6 +13,8 @@ namespace SpellProject.Battle.View
         [SerializeField] private float rotationValue = 120f;
         [SerializeField] private float lerpValue = 0.1f;
 
+
+        private PlayerKey _owner;
         private Rigidbody2D _rigidbody2D;
         private Animator _animator;
 
@@ -19,6 +22,11 @@ namespace SpellProject.Battle.View
         {
             _rigidbody2D = GetComponent<Rigidbody2D>();
             _animator = GetComponentInChildren<Animator>();
+        }
+
+        public void Construct(PlayerKey playerKey)
+        {
+            _owner = playerKey;
         }
 
         public Vector2 Position
@@ -57,6 +65,8 @@ namespace SpellProject.Battle.View
 
         public void OnAttacked(AttackParameter attackParameter)
         {
+            if (attackParameter.OwnerKey == _owner)
+                return;
             OnHitAnimationRpc();
         }
     }

@@ -13,10 +13,6 @@ namespace Takenokohal.Utility
             return v;
         }
 
-        private static string[] SplitRowToData(string row)
-        {
-            return row.Split(new[] { ',' }, StringSplitOptions.None);
-        }
 
         private static IReadOnlyList<IReadOnlyDictionary<string, object>> CsvToDictionary(string csv)
         {
@@ -52,6 +48,11 @@ namespace Takenokohal.Utility
             }
 
             return dicList;
+        }
+        
+        private static string[] SplitRowToData(string row)
+        {
+            return row.Split(new[] { ',' }, StringSplitOptions.None);
         }
 
         private static List<List<string>> CleanUp(IReadOnlyList<IReadOnlyList<string>> origin)

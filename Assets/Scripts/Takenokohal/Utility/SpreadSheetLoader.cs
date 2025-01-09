@@ -1,15 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 using Newtonsoft.Json;
-using UnityEngine;
 using UnityEngine.Networking;
 
 namespace Takenokohal.Utility
 {
     public static class SpreadSheetLoader
     {
-        public static async UniTask<List<T>> LoadData<T>(string url)
+        public static async UniTask<IReadOnlyList<T>> LoadData<T>(string url)
         {
             var req = UnityWebRequest.Get(url);
             var result = await req.SendWebRequest();
@@ -21,12 +19,7 @@ namespace Takenokohal.Utility
             {
                 ObjectCreationHandling = ObjectCreationHandling.Replace
             });
-            Debug.Log(target.Count);
             return target;
-            return JsonConvert.DeserializeObject<List<T>>(json, new JsonSerializerSettings()
-            {
-                ObjectCreationHandling = ObjectCreationHandling.Replace
-            });
         }
     }
 }

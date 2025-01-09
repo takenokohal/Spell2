@@ -34,7 +34,7 @@ namespace SpellProject.Battle.God.Binder
             _index++;
 
             var characterBodyView = playerSpawnCall.GetComponent<CharacterBodyView>();
-
+            characterBodyView.Construct(playerKey);
             var playerBody = new PlayerBody(characterBodyView);
 
 
