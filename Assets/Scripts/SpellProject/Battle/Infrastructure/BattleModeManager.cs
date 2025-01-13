@@ -4,7 +4,7 @@ using SpellProject.Battle.God;
 using UnityEngine;
 using VContainer;
 
-namespace SpellProject.Battle.View
+namespace SpellProject.Battle.Infrastructure
 {
     public class BattleModeManager : MonoBehaviour, IBattleModeManager
     {

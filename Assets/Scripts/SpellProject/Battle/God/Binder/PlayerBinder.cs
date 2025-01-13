@@ -22,7 +22,7 @@ namespace SpellProject.Battle.God.Binder
     {
         [Inject] private readonly AllPlayerManager _allPlayerManager;
         [Inject] private readonly ISpellFactory _spellFactory;
-        [Inject] private readonly IPlayerConstData _playerConstData;
+        [Inject] private readonly IBattleConstDataProvider _battleConstDataProvider;
         [Inject] private readonly SpellDatabase _spellDatabase;
 
         [Inject] private readonly IBattleModeManager _battleModeManager;
@@ -37,12 +37,12 @@ namespace SpellProject.Battle.God.Binder
             _index++;
 
             //View
-            var characterBodyView = playerSpawnCall.GetComponent<CharacterBodyController>();
+            var characterBodyView = playerSpawnCall.GetComponent<CharacterBodyView>();
             characterBodyView.Construct(playerKey);
             var playerBody = new PlayerBody(characterBodyView);
 
             var playerParameters = new PlayerParameters();
-            playerParameters.Init(_playerConstData.PlayerMaxLife);
+            playerParameters.Init(_battleConstDataProvider.GetBattleConstData().PlayerMaxLife);
 
             //Facade
             var playerFacade = new PlayerFacade(playerBody, playerKey, playerParameters);
@@ -56,7 +56,7 @@ namespace SpellProject.Battle.God.Binder
 
             //UI
             var view = _playerLifeViewManager.PlayerLifeUIViews[playerKey.ID];
-            view.Construct(_playerConstData, playerParameters);
+            view.Construct(_battleConstDataProvider, playerParameters);
 
 
             UniTask.Void(async () =>
@@ -89,7 +89,6 @@ namespace SpellProject.Battle.God.Binder
             };
 
 
-
             PlayerSpellUseCase.ISpellChantCall chant;
             if (battleMode == BattleMode.Online)
             {
@@ -101,13 +100,13 @@ namespace SpellProject.Battle.God.Binder
             {
                 chant = new OfflinePlayerSpellChant(_spellFactory, playerKey);
             }
-            
+
             if (!inputAuthority)
                 return;
 
             //UseCase
             var spellUseCase = new PlayerSpellUseCase(chant, hand, deck);
-            var moveUseCase = new PlayerMoveUseCase(playerBody, _playerConstData);
+            var moveUseCase = new PlayerMoveUseCase(playerBody, _battleConstDataProvider);
 
             var input = characterBodyView.GetComponent<PlayerInputController>();
             input.Construct(

@@ -8,11 +8,10 @@ using UnityEngine;
 
 namespace SpellProject.Battle.View
 {
-    public class CharacterBodyController : MonoBehaviour, ICharacterBodyView
+    public class CharacterBodyView : MonoBehaviour, ICharacterBodyView
     {
         [SerializeField] private float rotationValue = 120f;
         [SerializeField] private float lerpValue = 0.1f;
-
 
         private PlayerKey _owner;
         private Rigidbody2D _rigidbody2D;

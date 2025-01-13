@@ -3,6 +3,7 @@ using SpellProject.Battle.Detail.ConstData;
 using SpellProject.Battle.Domain.Core.Player;
 using SpellProject.Battle.God.Binder;
 using SpellProject.Battle.God.Factory;
+using SpellProject.Battle.Infrastructure;
 using SpellProject.Battle.View;
 using SpellProject.Battle.View.UI;
 using SpellProject.Data.AssetHolders;
@@ -17,7 +18,7 @@ namespace SpellProject.Battle.God
     {
         [SerializeField] private SpellAdditionalDatabase spellAdditionalDatabase;
         [SerializeField] private BattleObjectAssetHolder battleObjectAssetHolder;
-        [SerializeField] private PlayerConstData playerConstData;
+        [SerializeField] private BattleConstDataProviderProvider battleConstDataProviderProvider;
 
 
         protected override void Configure(IContainerBuilder builder)
@@ -41,7 +42,7 @@ namespace SpellProject.Battle.God
 
             //Data
             builder.RegisterInstance(spellAdditionalDatabase).AsImplementedInterfaces();
-            builder.RegisterInstance(playerConstData).AsImplementedInterfaces();
+            builder.RegisterInstance(battleConstDataProviderProvider).AsImplementedInterfaces();
 
             //AssetHolder
             builder.RegisterInstance(battleObjectAssetHolder);
