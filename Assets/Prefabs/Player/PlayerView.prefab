@@ -6791,6 +6791,8 @@ GameObject:
   - component: {fileID: 1450233513188791004}
   - component: {fileID: 1379550599902020325}
   - component: {fileID: 6337689187655137600}
+  - component: {fileID: 5845373303069360779}
+  - component: {fileID: 2190760720948648628}
   m_Layer: 0
   m_Name: PlayerView
   m_TagString: Untagged
@@ -6845,6 +6847,7 @@ MonoBehaviour:
   NetworkedBehaviours:
   - {fileID: 7137676821991006781}
   - {fileID: 7973575987838797215}
+  - {fileID: 2190760720948648628}
 --- !u!50 &5077694664262781146
 Rigidbody2D:
   serializedVersion: 5
@@ -6999,6 +7002,40 @@ MonoBehaviour:
   m_DefaultActionMap: Battle
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &5845373303069360779
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6013386668979275191}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7975d9341e042bda0ae393d1060c9e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2190760720948648628
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6013386668979275191}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5e690b5fb1084f5ab1c86457af401d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SyncScale: 0
+  SyncParent: 1
+  _interpolationTarget: {fileID: 0}
+  UsePreciseRotation: 0
+  UseRenderSleepThresholds: 1
+  RenderThresholds:
+    UseEnergy: 1
+    Position: 0.01
+    Rotation: 0.01
+    Scale: 0.01
 --- !u!1 &6072606907615761300
 GameObject:
   m_ObjectHideFlags: 0

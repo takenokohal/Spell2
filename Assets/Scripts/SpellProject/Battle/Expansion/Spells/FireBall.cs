@@ -1,7 +1,6 @@
 ﻿using Cysharp.Threading.Tasks;
 using SpellProject.Battle.Domain.BaseRules.Spell;
 using SpellProject.Battle.Expansion.BattleObjects.Bullets;
-using SpellProject.Data;
 using SpellProject.Data.AssetHolders;
 using UnityEngine;
 

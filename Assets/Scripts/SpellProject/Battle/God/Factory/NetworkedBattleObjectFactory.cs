@@ -1,6 +1,8 @@
 ﻿using Fusion;
 using SpellProject.Battle.Domain.BaseRules.BattleObject;
+using SpellProject.Battle.Domain.Core;
 using SpellProject.Battle.Domain.Core.Player;
+using SpellProject.Battle.Domain.Interfaces;
 using SpellProject.Battle.Domain.Interfaces.Factory;
 using SpellProject.Data.AssetHolders;
 using UnityEngine;
@@ -8,7 +10,6 @@ using VContainer;
 
 namespace SpellProject.Battle.God.Factory
 {
-    //BattleObjectは生成した側だけが処理を行う（権限を持たない側は状態同期のみ行う）
     public class NetworkedBattleObjectFactory : IBattleObjectFactory
     {
         [Inject] private readonly BattleObjectAssetHolder _battleObjectAssetHolder;
@@ -16,11 +17,17 @@ namespace SpellProject.Battle.God.Factory
 
         [Inject] private readonly NetworkRunner _networkRunner;
 
+        [Inject] private readonly IBattleModeManager _battleModeManager;
+
         public T Create<T>(string bulletKey, PlayerKey ownerKey, Vector2 pos, Quaternion rot = new())
             where T : BattleObjectBase
-        {
+        {            
             var prefab = _battleObjectAssetHolder.FindByKey(bulletKey);
-            var v = _networkRunner.Spawn(prefab, pos, rot);
+
+            var v = _battleModeManager.BattleMode == BattleMode.Online
+                ? _networkRunner.Spawn(prefab, pos, rot)
+                : Object.Instantiate(prefab, pos, rot);
+            
             v.Construct(new BattleObjectBase.ConstructParameter(ownerKey, _allPlayerManager));
             return (T)v;
         }

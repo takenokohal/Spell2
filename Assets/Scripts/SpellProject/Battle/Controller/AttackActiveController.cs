@@ -2,9 +2,9 @@
 using SpellProject.Battle.Domain.Interfaces.Attack;
 using UnityEngine;
 
-namespace SpellProject.Battle.View
+namespace SpellProject.Battle.Controller
 {
-    public class AttackActiveView : MonoBehaviour
+    public class AttackActiveController : MonoBehaviour
     {
         private AttackParameter _attackParameter;
         [SerializeField] private Collider2D col;
@@ -27,7 +27,7 @@ namespace SpellProject.Battle.View
             if (!_setUpped)
                 return;
             
-            var passive = other.GetComponent<IAttackPassiveView>();
+            var passive = other.GetComponent<IAttackPassiveController>();
             passive?.OnAttacked(_attackParameter);
         }
 

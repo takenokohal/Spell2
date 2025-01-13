@@ -2,7 +2,7 @@
 
 namespace SpellProject.Battle.Domain.Interfaces.Attack
 {
-    public interface IAttackPassiveView
+    public interface IAttackPassiveController
     {
         public void OnAttacked(AttackParameter attackParameter);
     }

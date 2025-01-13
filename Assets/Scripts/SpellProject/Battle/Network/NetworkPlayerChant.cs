@@ -4,11 +4,10 @@ using SpellProject.Battle.Domain.Core.Player;
 using SpellProject.Battle.Domain.Interfaces.Factory;
 using SpellProject.Battle.Domain.UseCase;
 using SpellProject.Data.Database;
-using UnityEngine;
 
 namespace SpellProject.Battle.Network
 {
-    public class NetworkInvertedRpc : NetworkBehaviour, PlayerSpellUseCase.INetworkedSpellChantCall
+    public class NetworkPlayerChant : NetworkBehaviour, PlayerSpellUseCase.ISpellChantCall
     {
         private ISpellFactory _spellFactory;
         private PlayerKey _playerKey;
@@ -21,7 +20,7 @@ namespace SpellProject.Battle.Network
             _spellDatabase = spellDatabase;
         }
 
-        public void ChantCall(string spellKey)
+        public void Chant(string spellKey)
         {
             var index = _spellDatabase.GetIndex(spellKey);
             ChantCallRpc((byte)index);

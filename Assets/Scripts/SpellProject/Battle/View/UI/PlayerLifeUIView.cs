@@ -1,23 +1,32 @@
 ﻿using R3;
-using SpellProject.Battle.Detail.ConstData;
+using SpellProject.Battle.Domain.Core.Player;
 using SpellProject.Battle.Domain.Interfaces.Player;
 using UnityEngine;
 using UnityEngine.UI;
-using VContainer;
 
 namespace SpellProject.Battle.View.UI
 {
     public class PlayerLifeUIView : MonoBehaviour
     {
         [SerializeField] private Slider sliderTest;
-        [Inject] private readonly PlayerConstData _playerConstData;
-        [Inject] private readonly IPlayerParameters _playerParameters;
+        private IPlayerConstData _playerConstData;
+        private PlayerParameters _playerParameters;
 
 
-        private void Start()
+        public void Construct(IPlayerConstData playerConstData, PlayerParameters playerParameters)
         {
-            _playerParameters.PlayerLifeObservable.Subscribe(value =>
-                sliderTest.value = value / _playerConstData.PlayerMaxLife).AddTo(this);
+            _playerConstData = playerConstData;
+            _playerParameters = playerParameters;
+
+            Init();
+        }
+
+        private void Init()
+        {
+            _playerParameters.CurrentLifeObservable.Subscribe(value =>
+            {
+                sliderTest.value = (float)value / _playerConstData.PlayerMaxLife;
+            }).AddTo(this);
         }
     }
 }

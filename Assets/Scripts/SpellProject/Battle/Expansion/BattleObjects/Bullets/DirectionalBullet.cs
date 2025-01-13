@@ -1,4 +1,5 @@
-﻿using SpellProject.Battle.Domain.BaseRules.BattleObject;
+﻿using SpellProject.Battle.Controller;
+using SpellProject.Battle.Domain.BaseRules.BattleObject;
 using SpellProject.Battle.Domain.Core.Attack;
 using SpellProject.Battle.View;
 using UnityEngine;
@@ -7,7 +8,7 @@ namespace SpellProject.Battle.Expansion.BattleObjects.Bullets
 {
     public class DirectionalBullet : BulletBase
     {
-        [SerializeField] private AttackActiveView attackActiveView;
+        [SerializeField] private AttackActiveController attackActiveController;
         
         public class Parameter
         {
@@ -23,9 +24,9 @@ namespace SpellProject.Battle.Expansion.BattleObjects.Bullets
 
         protected override void InitializeOnChild()
         {
-            attackActiveView.SetUp(new AttackParameter(OwnerKey,10));
+            attackActiveController.SetUp(new AttackParameter(OwnerKey,10));
 
-            attackActiveView.Activate(true);
+            attackActiveController.Activate(true);
         }
 
         public void Shoot(Parameter parameter)

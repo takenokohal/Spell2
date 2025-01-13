@@ -1,51 +1,36 @@
-﻿using Cysharp.Threading.Tasks;
-using SpellProject.Battle.Domain.Core.Player;
-using SpellProject.Battle.Domain.Interfaces.Factory;
+﻿using SpellProject.Battle.Domain.Core.Player;
 
 namespace SpellProject.Battle.Domain.UseCase
 {
     public class PlayerSpellUseCase
     {
-        private readonly ISpellFactory _spellFactory;
-
-        private readonly PlayerKey _playerKey;
-
-        private readonly INetworkedSpellChantCall _networkedSpellChantCall;
-
-        private readonly PlayerDeck _playerDeck;
+        private readonly ISpellChantCall _spellChantCall;
         private readonly PlayerHand _playerHand;
+        private readonly PlayerDeck _playerDeck;
 
-        public PlayerSpellUseCase(ISpellFactory spellFactory, PlayerKey playerKey, INetworkedSpellChantCall networkedSpellChantCall, PlayerDeck playerDeck, PlayerHand playerHand)
+        public PlayerSpellUseCase(ISpellChantCall spellChantCall, PlayerHand playerHand, PlayerDeck playerDeck)
         {
-            _spellFactory = spellFactory;
-            _playerKey = playerKey;
-            _networkedSpellChantCall = networkedSpellChantCall;
-            _playerDeck = playerDeck;
+            _spellChantCall = spellChantCall;
             _playerHand = playerHand;
+            _playerDeck = playerDeck;
         }
 
         public void Chant(int handIndex)
         {
             var spellEntity = _playerHand.CurrentHand[handIndex];
-            var spell = _spellFactory.Create(_playerKey, spellEntity.SpellKey);
-
-            //処理はSpellに投げっぱなし
-            spell.Sequence().Forget();
             
+            //オンとオフでここで分岐
+            _spellChantCall.Chant(spellEntity.SpellKey);
+
+
             //デッキ処理
             _playerDeck.Draw(out var nextSpell);
             _playerHand.Change(handIndex, nextSpell);
         }
 
-        public void NetworkChant(int handIndex)
+        public interface ISpellChantCall
         {
-            var spellEntity = _playerHand.CurrentHand[handIndex];
-            _networkedSpellChantCall.ChantCall(spellEntity.SpellKey);
-        }
-
-        public interface INetworkedSpellChantCall
-        {
-            public void ChantCall(string spellKey);
+            public void Chant(string spellKey);
         }
     }
 }

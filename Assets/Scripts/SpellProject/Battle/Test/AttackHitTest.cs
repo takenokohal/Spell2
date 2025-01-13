@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace SpellProject.Battle.Test
 {
-    public class AttackHitTest : MonoBehaviour, IAttackPassiveView
+    public class AttackHitTest : MonoBehaviour, IAttackPassiveController
     {
         public void OnAttacked(AttackParameter attackParameter)
         {

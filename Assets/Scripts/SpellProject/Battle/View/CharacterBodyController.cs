@@ -8,7 +8,7 @@ using UnityEngine;
 
 namespace SpellProject.Battle.View
 {
-    public class CharacterBodyView : MonoBehaviour, ICharacterBodyView, IAttackPassiveView
+    public class CharacterBodyController : MonoBehaviour, ICharacterBodyView
     {
         [SerializeField] private float rotationValue = 120f;
         [SerializeField] private float lerpValue = 0.1f;
@@ -67,6 +67,8 @@ namespace SpellProject.Battle.View
         {
             if (attackParameter.OwnerKey == _owner)
                 return;
+            
+            
             OnHitAnimationRpc();
         }
     }

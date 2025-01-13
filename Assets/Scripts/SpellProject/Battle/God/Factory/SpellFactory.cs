@@ -36,8 +36,7 @@ namespace SpellProject.Battle.God.Factory
             //共通クラスを渡す場合がある
             return spellKey switch
             {
-                "TestSpell" => new TestSpell(),
-                "FireBall"=> new FireBall(),
+                "FireShoot"=> new FireBall(),
                 _ => null
             };
         }

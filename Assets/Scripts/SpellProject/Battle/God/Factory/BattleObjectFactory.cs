@@ -1,4 +1,4 @@
-﻿using SpellProject.Battle.Domain.BaseRules.BattleObject;
+﻿/*using SpellProject.Battle.Domain.BaseRules.BattleObject;
 using SpellProject.Battle.Domain.Core.Player;
 using SpellProject.Battle.Domain.Interfaces.Factory;
 using SpellProject.Data.AssetHolders;
@@ -22,4 +22,4 @@ namespace SpellProject.Battle.God.Factory
             return (T)v;
         }
     }
-}
+}*/

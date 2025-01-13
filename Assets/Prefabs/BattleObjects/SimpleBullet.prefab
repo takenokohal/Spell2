@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2036866206988885560}
   - component: {fileID: 5753327093656999295}
   - component: {fileID: 5055133258785022872}
+  - component: {fileID: -53750369409240865}
   m_Layer: 0
   m_Name: SimpleBullet
   m_TagString: Untagged
@@ -82,6 +83,7 @@ MonoBehaviour:
   NestedObjects: []
   NetworkedBehaviours:
   - {fileID: 5753327093656999295}
+  - {fileID: -53750369409240865}
 --- !u!61 &2036866206988885560
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -141,7 +143,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   body: {fileID: 2184138789919819977}
-  attackActiveView: {fileID: 5055133258785022872}
+  attackActiveController: {fileID: 5055133258785022872}
 --- !u!114 &5055133258785022872
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -155,6 +157,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   col: {fileID: 2036866206988885560}
+--- !u!114 &-53750369409240865
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1629513805993508483}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5e690b5fb1084f5ab1c86457af401d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SyncScale: 0
+  SyncParent: 1
+  _interpolationTarget: {fileID: 0}
+  UsePreciseRotation: 0
+  UseRenderSleepThresholds: 1
+  RenderThresholds:
+    UseEnergy: 1
+    Position: 0.01
+    Rotation: 0.01
+    Scale: 0.01
 --- !u!1 &3733500875875715445
 GameObject:
   m_ObjectHideFlags: 0
