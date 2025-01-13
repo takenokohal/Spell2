@@ -22,11 +22,6 @@ namespace SpellProject.Battle.Domain.UseCase
             dir.Normalize();
 
             _playerBody.Velocity = dir * _battleConstDataProvider.GetBattleConstData().PlayerMoveSpeed;
-
-            if (inputDirection == Vector2Int.zero)
-                return;
-
-            _playerBody.Rotation = inputDirection.x;
         }
     }
 }

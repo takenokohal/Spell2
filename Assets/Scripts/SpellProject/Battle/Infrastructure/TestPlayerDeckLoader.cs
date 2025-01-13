@@ -11,7 +11,7 @@ namespace SpellProject.Battle.Infrastructure
             var list = new List<SpellEntity>();
             for (int i = 0; i < 20; i++)
             {
-                list.Add(new SpellEntity("FireShoot"));
+                list.Add(new SpellEntity("FireCracker"));
             }
 
             return list;

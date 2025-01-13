@@ -1,4 +1,5 @@
 using Cysharp.Threading.Tasks;
+using SpellProject.Battle.Domain.BaseRules.MagicCircles;
 using SpellProject.Battle.Domain.Interfaces;
 using Takenokohal.Utility;
 using UnityEngine;
@@ -7,7 +8,7 @@ using VContainer;
 
 namespace SpellProject.Battle.View.MagicCircles
 {
-    public class MagicCircleFactory : MonoBehaviour
+    public class MagicCircleFactory : MonoBehaviour , IMagicCircleFactory
     {
         [Inject] private readonly IBattleConstDataProvider _battleConstDataProvider;
         [SerializeField] private MagicCircleView magicCirclePrefab;

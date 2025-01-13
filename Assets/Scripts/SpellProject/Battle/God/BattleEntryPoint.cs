@@ -42,7 +42,7 @@ namespace SpellProject.Battle.God
                 case BattleMode.Training:
                     for (int i = 0; i < 2; i++)
                     {
-                        var x = i == 0 ? 1 : -1;
+                        var x = i == 0 ? -1 : 1;
                         Instantiate(playerSpawnCallPrefab, new Vector3(5 * x, 0), Quaternion.identity);
                     }
 

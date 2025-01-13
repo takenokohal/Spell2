@@ -58,6 +58,9 @@ namespace SpellProject.Battle.God.Binder
             var view = _playerLifeViewManager.PlayerLifeUIViews[playerKey.ID];
             view.Construct(_battleConstDataProvider, playerParameters);
 
+            //Controller
+            AutoRotateController.Start(characterBodyView.destroyCancellationToken, playerKey,
+                _allPlayerManager);
 
             UniTask.Void(async () =>
             {

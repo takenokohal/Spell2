@@ -30,7 +30,7 @@ namespace SpellProject.Battle.Domain.Core.Player
             set => LookRight = value >= 0;
         }
 
-        public Vector2 Forward => new Vector2(Rotation, 0);
+        public Vector2 Forward => new(Rotation, 0);
 
 
         public Vector2 Position

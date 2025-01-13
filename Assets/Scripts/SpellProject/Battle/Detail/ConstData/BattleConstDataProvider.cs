@@ -6,8 +6,8 @@ using UnityEngine;
 namespace SpellProject.Battle.Detail.ConstData
 {
     
-    [CreateAssetMenu(menuName = "Create BattleConstDataProviderProvider", fileName = "BattleConstDataProviderProvider", order = 0)]
-    public class BattleConstDataProviderProvider : SerializedScriptableObject , IBattleConstDataProvider
+    [CreateAssetMenu(menuName = "Create BattleConstDataProvider", fileName = "BattleConstDataProvider", order = 0)]
+    public class BattleConstDataProvider : SerializedScriptableObject , IBattleConstDataProvider
     {
         [SerializeField] private BattleConstData battleConstData;
         

@@ -4,6 +4,7 @@ using LitMotion;
 using LitMotion.Extensions;
 using R3;
 using R3.Triggers;
+using SpellProject.Battle.Domain.BaseRules.MagicCircles;
 using UnityEngine;
 
 namespace SpellProject.Battle.View.MagicCircles
@@ -25,7 +26,7 @@ namespace SpellProject.Battle.View.MagicCircles
 
         public async UniTask Close()
         {
-            var originScale = transform.position;
+            var originScale = transform.localScale;
             await LMotion.Create(originScale, Vector3.zero, 0.2f)
                 .BindToLocalScale(transform).ToUniTask(cancellationToken: destroyCancellationToken);
             gameObject.SetActive(false);

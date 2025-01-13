@@ -5,6 +5,7 @@ using SpellProject.Battle.God.Binder;
 using SpellProject.Battle.God.Factory;
 using SpellProject.Battle.Infrastructure;
 using SpellProject.Battle.View;
+using SpellProject.Battle.View.MagicCircles;
 using SpellProject.Battle.View.UI;
 using SpellProject.Data.AssetHolders;
 using SpellProject.Data.Database;
@@ -18,7 +19,7 @@ namespace SpellProject.Battle.God
     {
         [SerializeField] private SpellAdditionalDatabase spellAdditionalDatabase;
         [SerializeField] private BattleObjectAssetHolder battleObjectAssetHolder;
-        [SerializeField] private BattleConstDataProviderProvider battleConstDataProviderProvider;
+        [SerializeField] private BattleConstDataProvider battleConstDataProvider;
 
 
         protected override void Configure(IContainerBuilder builder)
@@ -32,6 +33,7 @@ namespace SpellProject.Battle.God
             //Factory
             builder.Register<SpellFactory>(Lifetime.Singleton).AsImplementedInterfaces();
             builder.Register<NetworkedBattleObjectFactory>(Lifetime.Singleton).AsImplementedInterfaces();
+            builder.RegisterComponentInHierarchy<MagicCircleFactory>().AsImplementedInterfaces();
 
             //Binder
             builder.RegisterComponentInHierarchy<PlayerBinder>();
@@ -42,7 +44,7 @@ namespace SpellProject.Battle.God
 
             //Data
             builder.RegisterInstance(spellAdditionalDatabase).AsImplementedInterfaces();
-            builder.RegisterInstance(battleConstDataProviderProvider).AsImplementedInterfaces();
+            builder.RegisterInstance(battleConstDataProvider).AsImplementedInterfaces();
 
             //AssetHolder
             builder.RegisterInstance(battleObjectAssetHolder);

@@ -2,7 +2,6 @@
 using LitMotion.Extensions;
 using SpellProject.Battle.Domain.Core.Attack;
 using SpellProject.Battle.Domain.Core.Player;
-using SpellProject.Battle.Domain.Interfaces.Attack;
 using SpellProject.Battle.Domain.Interfaces.Player;
 using UnityEngine;
 

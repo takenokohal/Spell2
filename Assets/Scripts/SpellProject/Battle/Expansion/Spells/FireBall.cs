@@ -16,7 +16,7 @@ namespace SpellProject.Battle.Expansion.Spells
         public override UniTask Sequence()
         {
             var bulletKey = GetAdditionalData<AdditionalData>().BattleObjectKey.Key;
-            var bullet = BattleObjectFactory.Create<DirectionalBullet>(bulletKey, Owner.PlayerKey, CalcPos());
+            var bullet = BattleObjectFactory.Create<DirectionalBullet>(bulletKey, OwnerFacade.PlayerKey, CalcPos());
             bullet.Shoot(new DirectionalBullet.Parameter(CalcPos(), CalcDir()));
 
             return UniTask.CompletedTask;
@@ -24,12 +24,12 @@ namespace SpellProject.Battle.Expansion.Spells
 
         private Vector2 CalcPos()
         {
-            return Owner.PlayerBody.Position + CalcDir();
+            return OwnerFacade.PlayerBody.Position + CalcDir();
         }
 
         private Vector2 CalcDir()
         {
-            return Owner.PlayerBody.Forward;
+            return OwnerFacade.PlayerBody.Forward;
         }
     }
 }

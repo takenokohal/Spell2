@@ -1326,6 +1326,7 @@ Transform:
   - {fileID: 859488520}
   - {fileID: 1288673597}
   - {fileID: 957038602}
+  - {fileID: 1942328240}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1288673595
@@ -1357,7 +1358,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b06a214dccb463882459249faee89ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  serializedBattleMode: 0
+  serializedBattleMode: 3
 --- !u!4 &1288673597
 Transform:
   m_ObjectHideFlags: 0
@@ -1654,6 +1655,51 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sliderTest: {fileID: 1849865020}
+--- !u!1 &1942328239
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1942328240}
+  - component: {fileID: 1942328241}
+  m_Layer: 0
+  m_Name: Factory
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1942328240
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1942328239}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1284404128}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1942328241
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1942328239}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7028b52fe644cdaaf7cd23f64fdac94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  magicCirclePrefab: {fileID: -3453285633701762612, guid: b947b4db0eb51f4448dad3b3dafbf4c8, type: 3}
 --- !u!1 &1965171425
 GameObject:
   m_ObjectHideFlags: 0
@@ -1815,7 +1861,7 @@ MonoBehaviour:
   autoInjectGameObjects: []
   spellAdditionalDatabase: {fileID: 11400000, guid: 581b3a0e4bbeb8146887df0e1fb62bcc, type: 2}
   battleObjectAssetHolder: {fileID: 11400000, guid: ea0bc18d092434e4797ac4d97c36abe8, type: 2}
-  playerConstData: {fileID: 11400000, guid: 60c637be179c23a47847724d84e3c183, type: 2}
+  battleConstDataProvider: {fileID: 11400000, guid: dc4991214644e6f4ab32312dbfedfd43, type: 2}
 --- !u!1 &9043754418060217887
 GameObject:
   m_ObjectHideFlags: 0

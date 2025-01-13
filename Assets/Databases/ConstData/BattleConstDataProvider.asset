@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: db3325f4695e4cdeb2b058ea8792efaf, type: 3}
-  m_Name: PlayerConstData
+  m_Name: BattleConstDataProvider
   m_EditorClassIdentifier: 
   serializationData:
     SerializedFormat: 2
@@ -21,5 +21,7 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
-  moveSpeed: 5
-  playerMaxLife: 100
+  battleConstData:
+    playerMaxLife: 100
+    playerMoveSpeed: 5
+    magicCircleShowDuration: 0.5

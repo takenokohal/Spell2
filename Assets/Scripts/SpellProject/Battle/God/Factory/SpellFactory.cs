@@ -1,4 +1,5 @@
-﻿using SpellProject.Battle.Domain.BaseRules.Spell;
+﻿using SpellProject.Battle.Domain.BaseRules.MagicCircles;
+using SpellProject.Battle.Domain.BaseRules.Spell;
 using SpellProject.Battle.Domain.Core.Player;
 using SpellProject.Battle.Domain.Interfaces.Factory;
 using SpellProject.Battle.Expansion.Spells;
@@ -14,6 +15,7 @@ namespace SpellProject.Battle.God.Factory
         [Inject] private readonly IBattleObjectFactory _battleObjectFactory;
         [Inject] private readonly ISpellAdditionalDatabase _spellAdditionalDatabase;
         [Inject] private readonly AllPlayerManager _allPlayerManager;
+        [Inject] private readonly IMagicCircleFactory _magicCircleFactory;
 
         public ISpellSequence Create(PlayerKey playerKey, string spellKey)
         {
@@ -24,10 +26,12 @@ namespace SpellProject.Battle.God.Factory
                 return null;
             }
 
-            instance.Construct(new SpellBase.ConstructParameters(
+            instance.Construct(
                 _battleObjectFactory,
                 _spellAdditionalDatabase,
-                _allPlayerManager.Players[playerKey]));
+                playerKey,
+                _allPlayerManager,
+                _magicCircleFactory);
             return instance;
         }
 
@@ -36,7 +40,8 @@ namespace SpellProject.Battle.God.Factory
             //共通クラスを渡す場合がある
             return spellKey switch
             {
-                "FireShoot"=> new FireBall(),
+                "FireShoot" => new FireBall(),
+                "FireCracker"=> new FireCracker(),
                 _ => null
             };
         }

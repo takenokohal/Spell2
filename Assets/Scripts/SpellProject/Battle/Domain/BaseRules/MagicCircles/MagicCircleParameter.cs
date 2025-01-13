@@ -2,7 +2,7 @@ using System;
 using SpellProject.Battle.Domain.Core.Player;
 using UnityEngine;
 
-namespace SpellProject.Battle.View.MagicCircles
+namespace SpellProject.Battle.Domain.BaseRules.MagicCircles
 {
     public class MagicCircleParameter
     {
