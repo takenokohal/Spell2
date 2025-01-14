@@ -1,4 +1,6 @@
-﻿using SpellProject.Battle.Domain.BaseRules.MagicCircles;
+﻿using System;
+using System.Threading;
+using SpellProject.Battle.Domain.BaseRules.MagicCircles;
 using SpellProject.Battle.Domain.BaseRules.Spell;
 using SpellProject.Battle.Domain.Core.Player;
 using SpellProject.Battle.Domain.Interfaces.Factory;
@@ -10,12 +12,14 @@ using VContainer;
 namespace SpellProject.Battle.God.Factory
 {
     //Spellは生成した側だけが処理実行
-    public class SpellFactory : ISpellFactory
+    public class SpellFactory : ISpellFactory, IDisposable
     {
         [Inject] private readonly IBattleObjectFactory _battleObjectFactory;
         [Inject] private readonly ISpellAdditionalDatabase _spellAdditionalDatabase;
         [Inject] private readonly AllPlayerManager _allPlayerManager;
         [Inject] private readonly IMagicCircleFactory _magicCircleFactory;
+
+        private readonly CancellationTokenSource _cancellationTokenSource = new();
 
         public ISpellSequence Create(PlayerKey playerKey, string spellKey)
         {
@@ -31,7 +35,8 @@ namespace SpellProject.Battle.God.Factory
                 _spellAdditionalDatabase,
                 playerKey,
                 _allPlayerManager,
-                _magicCircleFactory);
+                _magicCircleFactory,
+                _cancellationTokenSource.Token);
             return instance;
         }
 
@@ -41,9 +46,14 @@ namespace SpellProject.Battle.God.Factory
             return spellKey switch
             {
                 "FireShoot" => new FireBall(),
-                "FireCracker"=> new FireCracker(),
+                "FireCracker" => new FireCracker(),
                 _ => null
             };
+        }
+
+        public void Dispose()
+        {
+            _cancellationTokenSource?.Dispose();
         }
     }
 }

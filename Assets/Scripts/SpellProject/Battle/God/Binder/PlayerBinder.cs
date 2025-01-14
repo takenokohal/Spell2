@@ -93,6 +93,7 @@ namespace SpellProject.Battle.God.Binder
 
 
             PlayerSpellUseCase.ISpellChantCall chant;
+            /*
             if (battleMode == BattleMode.Online)
             {
                 var v = characterBodyView.GetComponent<NetworkPlayerChant>();
@@ -103,6 +104,8 @@ namespace SpellProject.Battle.God.Binder
             {
                 chant = new OfflinePlayerSpellChant(_spellFactory, playerKey);
             }
+            */
+            chant = new OfflinePlayerSpellChant(_spellFactory, playerKey);
 
             if (!inputAuthority)
                 return;

@@ -974,7 +974,7 @@ MonoBehaviour:
   m_NotificationBehavior: 2
   m_MaxPlayerCount: 2
   m_AllowJoining: 1
-  m_JoinBehavior: 0
+  m_JoinBehavior: 2
   m_PlayerJoinedEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -984,7 +984,7 @@ MonoBehaviour:
   m_JoinAction:
     m_UseReference: 0
     m_Action:
-      m_Name: 
+      m_Name: Join
       m_Type: 0
       m_ExpectedControlType: 
       m_Id: 9f58fe0f-15f9-4272-8cc4-2bbd4e626d99
@@ -1358,7 +1358,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b06a214dccb463882459249faee89ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  serializedBattleMode: 3
+  serializedBattleMode: 0
 --- !u!4 &1288673597
 Transform:
   m_ObjectHideFlags: 0

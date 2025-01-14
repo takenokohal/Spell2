@@ -42,6 +42,9 @@ namespace SpellProject.Battle.Expansion.Spells
 
             bullet.Shoot(
                 new DirectionalBullet.Parameter(CalcPos(i), CalcDir(i) * GetAdditionalData<Data>().BulletSpeed));
+
+            await MyDelay(3);
+            BattleObjectFactory.Destroy(bullet);
         }
 
         private Vector2 CalcPos(int i)

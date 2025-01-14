@@ -21,15 +21,27 @@ namespace SpellProject.Battle.God.Factory
 
         public T Create<T>(string bulletKey, PlayerKey ownerKey, Vector2 pos, Quaternion rot = new())
             where T : BattleObjectBase
-        {            
+        {
             var prefab = _battleObjectAssetHolder.FindByKey(bulletKey);
 
             var v = _battleModeManager.BattleMode == BattleMode.Online
                 ? _networkRunner.Spawn(prefab, pos, rot)
                 : Object.Instantiate(prefab, pos, rot);
-            
+
             v.Construct(new BattleObjectBase.ConstructParameter(ownerKey, _allPlayerManager));
             return (T)v;
+        }
+
+        public void Destroy(BattleObjectBase battleObjectBase)
+        {
+            if (_battleModeManager.BattleMode == BattleMode.Online)
+            {
+                _networkRunner.Despawn(battleObjectBase.Object);
+            }
+            else
+            {
+                Object.Destroy(battleObjectBase.gameObject);
+            }
         }
     }
 }

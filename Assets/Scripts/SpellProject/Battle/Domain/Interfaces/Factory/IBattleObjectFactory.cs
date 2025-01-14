@@ -8,5 +8,7 @@ namespace SpellProject.Battle.Domain.Interfaces.Factory
     {
         public T Create<T>(string objectKey, PlayerKey ownerKey, Vector2 pos, Quaternion rot = default)
             where T : BattleObjectBase;
+
+        public void Destroy(BattleObjectBase battleObjectBase);
     }
 }

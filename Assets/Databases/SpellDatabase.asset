@@ -32,3 +32,8 @@ MonoBehaviour:
     manaCost: 0.1
     spellType: 0
     description: bbb
+  - spellKey: FireCracker
+    nameJp: "\u30D5\u30A1\u30A4\u30A2\u30AF\u30E9\u30C3\u30AB\u30FC"
+    manaCost: 1
+    spellType: 0
+    description: aaaaa
