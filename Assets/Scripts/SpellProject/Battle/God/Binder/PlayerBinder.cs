@@ -38,7 +38,6 @@ namespace SpellProject.Battle.God.Binder
 
             //View
             var characterBodyView = playerSpawnCall.GetComponent<CharacterBodyView>();
-            characterBodyView.Construct(playerKey);
             var playerBody = new PlayerBody(characterBodyView);
 
             var playerParameters = new PlayerParameters();
@@ -134,6 +133,12 @@ namespace SpellProject.Battle.God.Binder
 
             var attackPassiveController = characterBodyView.GetComponent<PlayerAttackPassiveController>();
             attackPassiveController.Construct(attackPassiveUsecase);
+
+            var view = characterBodyView.GetComponent<PlayerAttackPassiveAnimationView>();
+            view.Construct(attackPassiveUsecase);
+
+            var network = view.GetComponent<NetworkedPlayerAnimationCall>();
+            network.Construct(view, attackPassiveUsecase);
         }
     }
 }

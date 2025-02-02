@@ -1,8 +1,11 @@
 ﻿using LitMotion;
 using LitMotion.Extensions;
+using R3;
 using SpellProject.Battle.Domain.Core.Attack;
 using SpellProject.Battle.Domain.Core.Player;
 using SpellProject.Battle.Domain.Interfaces.Player;
+using SpellProject.Battle.Domain.UseCase;
+using Takenokohal.Utility;
 using UnityEngine;
 
 namespace SpellProject.Battle.View
@@ -12,19 +15,14 @@ namespace SpellProject.Battle.View
         [SerializeField] private float rotationValue = 120f;
         [SerializeField] private float lerpValue = 0.1f;
 
-        private PlayerKey _owner;
         private Rigidbody2D _rigidbody2D;
         private Animator _animator;
+
 
         private void Start()
         {
             _rigidbody2D = GetComponent<Rigidbody2D>();
             _animator = GetComponentInChildren<Animator>();
-        }
-
-        public void Construct(PlayerKey playerKey)
-        {
-            _owner = playerKey;
         }
 
         public Vector2 Position
@@ -46,28 +44,11 @@ namespace SpellProject.Battle.View
             var r = Rotation ? 1 : -1;
             _currentRotation = Mathf.Lerp(_currentRotation, r * rotationValue, lerpValue);
 
-            _animator.transform.localRotation = Quaternion.Euler(0, _currentRotation, 0);
+            var animT = _animator.transform;
+            animT.localRotation = Quaternion.Euler(0, _currentRotation, 0);
+            animT.localPosition = Vector3.Lerp(animT.localPosition, Vector3.zero, 0.1f);
         }
 
         public bool Rotation { get; set; }
-
-
-        //ネットワーク系は後で別クラスに入れる。
-        //  [Rpc(RpcSources.StateAuthority, RpcTargets.All)]
-        private void OnHitAnimationRpc()
-        {
-            LMotion.Shake
-                .Create(Vector3.zero, new Vector3(2, 2), 0.2f)
-                .BindToLocalPosition(_animator.transform);
-        }
-
-        public void OnAttacked(AttackParameter attackParameter)
-        {
-            if (attackParameter.OwnerKey == _owner)
-                return;
-            
-            
-            OnHitAnimationRpc();
-        }
     }
 }
